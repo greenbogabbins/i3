@@ -258,7 +258,6 @@ bindsym XF86AudioPrev exec --no-startup-id mpc -h $mpd_socket prev
 # autostart
 exec --no-startup-id nitrogen --restore &
 exec --no-startup-id icedove &
-# exec --no-startup-id iceweasel &
 exec syndaemon -i 2 -d -t -K &
 exec mpd &
 exec (sleep 30s && xset s off && xset -dpms &) &
