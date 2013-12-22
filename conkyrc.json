@@ -1,0 +1,42 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+double_buffer yes
+update_interval 1.0
+total_run_times 0
+short_units yes
+cpu_avg_samples 4 
+font Monospace 9
+ 
+TEXT
+
+[
+
+	{ "full_text" : " ♪" , "color" : "\#E60604" , "separator" : false },
+	
+	{ "full_text" : "${mpd_artist 30}" , "color" : "\#B1B3B9" , "separator" : false },
+	{ "full_text" : "${if_match "$mpd_status"=="Paused"} = ${else} > ${endif}" , "color" : "\#B1B3B9" , "separator" : false },
+	{ "full_text" : "${mpd_title 30}" , "color" : "\#B1B3B9" , "separator" : false },
+	{ "full_text" : "[$mpd_elapsed / $mpd_length]" , "color" : "\#B1B3B9" , "separator" : false },
+	
+	{ "full_text" : "<" , "color" : "\#E7F811" , "separator" : false },
+	{ "full_text" : "${exec amixer get Master | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}%" , "color" : "\#B1B3B9" , "separator" : false },
+	
+	{ "full_text" : "↑" , "color" : "\#FF00FF" , "separator" : false },
+    { "full_text" : "${uptime_short}" , "color" : "\#B1B3B9" , "separator" : false },
+	
+	{ "full_text" : "☼" , "color" : "\#39A3EB" , "separator" : false },
+	{ "full_text" : "${acpitemp}°C" , "color" : ${if_match ${acpitemp}>60}"\#d70a53"${else}"\#B1B3B9"${endif} , "separator" : false },
+	
+	{ "full_text" : "▼" , "color" : "\#00EE00" , "separator" : false },
+	{ "full_text" : "${wireless_link_qual_perc wlan0}%" , "color" : ${if_match ${wireless_link_qual_perc wlan0}<50}"\#d70a53"${else}"\#B1B3B9"${endif} , "separator" : false },
+      
+    { "full_text" : "@" , "color" : "\#FF7F00" , "separator" : false },
+    { "full_text" : "${time %a %d %b}" , "color" : "\#B1B3B9" , "separator" : false },
+    
+    { "full_text" : "☺" , "color" : "\#883AEF" , "separator" : false },
+    { "full_text" : "${time %H:%M}" , "color" : "\#B1B3B9" , "separator" : false }
+    
+],	

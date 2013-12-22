@@ -1,0 +1,40 @@
+out_to_x no
+own_window no
+out_to_console yes
+background no
+max_text_width 0
+update_interval 1.0
+total_run_times 0
+short_units yes
+cpu_avg_samples 4
+
+TEXT
+♪ \
+$if_mpd_playing\
+${mpd_artist 40}\
+${else}\
+MPD [Stopped]\
+$endif \
+$if_mpd_playing\
+${if_match "$mpd_status"=="Paused"}\
+ = \
+${else}\
+ > \
+$endif \
+${mpd_title 40}\
+${if_match "$mpd_artist"!=""} \
+$endif \
+[$mpd_elapsed / $mpd_length] \
+$endif\
+  < \
+${exec amixer get Master | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}% \
+  ↑ \
+${uptime_short} \
+  ! \
+${acpitemp}°C \
+${if_up wlan0}\
+  ∇ \
+${wireless_link_qual_perc wlan0}% \
+$endif  \
+${time %a %d %b}, \
+${time %H:%M} \
